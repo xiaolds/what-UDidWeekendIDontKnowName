@@ -10,11 +10,16 @@ public class EncodeClass {
 	
 	private static final String DEFAULT_SRC_PATH = "/Users/weiqiuhan/Documents/lids/eclipse-work/ClassLoaderDemo/bin/";
 	private static final String DEFAULT_DES_PATH = "/Users/weiqiuhan/Documents/lids/eclipse-work/ClassLoaderDemo/encode-bin/";
+
+
+	/********Added By Lids at Home */
 	
 	public static void main(String[] args) throws IOException {
 		EncodeClass e = new EncodeClass();
 		e.encode(DEFAULT_SRC_PATH, DEFAULT_DES_PATH);
 	}
+
+	/********Added By Lids at Home */
 	
 	/**
 	 * encode Class file.
