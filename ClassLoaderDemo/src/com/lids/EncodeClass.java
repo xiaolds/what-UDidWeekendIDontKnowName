@@ -5,21 +5,23 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class EncodeClass {
 	
-	private static final String DEFAULT_SRC_PATH = "/Users/weiqiuhan/Documents/lids/eclipse-work/ClassLoaderDemo/bin/";
-	private static final String DEFAULT_DES_PATH = "/Users/weiqiuhan/Documents/lids/eclipse-work/ClassLoaderDemo/encode-bin/";
+	private static final String DEFAULT_SRC_PATH = "D:/WorkStation/me16/websure61/target/ROOT/";
+	private static final String DEFAULT_DES_PATH = "D:/WorkStation/me16/websure61/target/en-ROOT/";
+/*	private static final String DEFAULT_SRC_PATH = "D:/WorkStation/me16/Test/WebRoot/WEB-INF/classes/";
+	private static final String DEFAULT_DES_PATH = "D:/WorkStation/me16/Test/WebRoot/WEB-INF/classes/";
+*/
 
-
-	/********Added By Lids at Home */
 	
 	public static void main(String[] args) throws IOException {
 		EncodeClass e = new EncodeClass();
 		e.encode(DEFAULT_SRC_PATH, DEFAULT_DES_PATH);
 	}
 
-	/********Added By Lids at Home */
 	
 	/**
 	 * encode Class file.
@@ -53,6 +55,9 @@ public class EncodeClass {
 				if(subFile.getName().endsWith(".class")) {
 					encodeFile(subFile, new File(desPath , subFile.getName().replaceAll(".class", ".enclass")));
 				}
+				else {
+					Files.copy(Paths.get(subFile.getAbsolutePath()), Paths.get(desPath, subFile.getName()));
+				}
 			}
 		}
 		
@@ -76,10 +81,12 @@ public class EncodeClass {
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			return ;
 		} catch (IOException e) {
 			e.printStackTrace();
+			return;
 		}
-		
+		srcFile.delete();
 		
 	}
 	
